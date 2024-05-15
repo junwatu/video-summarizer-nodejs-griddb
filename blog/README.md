@@ -37,3 +37,45 @@ node --version
 To save the video summarize and video data, we will use GridDB database. We will use Ubuntu here, please look the [guide](https://docs.griddb.net/latest/gettingstarted/using-apt/#install-with-apt-get) for installation.
 
 ## Run the Project
+
+### PUll the Source Code
+
+To run the project, you need to clone the code from this [repository](https://github.com/junwatu/video-summarizer-nodejs-griddb).
+
+Run this command to pull the source code.
+
+```shell
+git clone https://github.com/junwatu/video-summarizer-nodejs-griddb.git
+```
+
+Change directory to `app` folder and install any project dependencies using this command:
+
+```shell
+cd video-summarizer-nodejs-griddb
+npm install
+```
+
+### Setup `.env`
+
+This project needs a few environment variables. Copy the `env.example` file to `.env` file.
+
+```shell
+cp .env.example .env
+```
+
+You need to fill the environment variables in this file:
+
+```ini
+OPENAI_API_KEY=sk-....
+APP_BASE_URL=http://localhost:3000
+```
+
+Everytime you change the `APP_BASE_URL` you need to rebuild the project also. Please run this command in `app` folder if you change that variable:
+
+```shell
+npm run rebuild
+```
+
+The command above will update the project to the new project url setting.
+
+### Start the Project
