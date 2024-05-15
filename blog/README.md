@@ -8,7 +8,10 @@ We will be utilizing the following technologies: OpenAI, Node.js, React, and Gri
 
 ## Prerequisites
 
-### OpenAI
+These are the mandatory prerequisites stacks that you need to run this project.
+
+### OpenAI Key
+
 
 ### Node.js
 
@@ -16,4 +19,4 @@ We will be utilizing the following technologies: OpenAI, Node.js, React, and Gri
 
 ### GridDB
 
-
+## Run the Project
