@@ -16,11 +16,11 @@ To access any OpenAI services, you need a valid key. Go to this [link](https://p
 
 ![setup key](images/openai-key.png)
 
-The OpenAI key is on a project basis, so you need to create a project first in the OpenAI platform and you need also enable any models that you used on a project.
+The OpenAI key is on a project basis, so you need to create a project first in the OpenAI platform and you need also enable any models that you used on a project. For this project we will need `gpt-4o` and `whisper` models.
 
 ![enabled models](images/openai-enabled-models.png)
 
-This key will be saved on `.env` file and make sure you don't include it in version control.
+The OpenAI key will be saved on `.env` file and make sure you don't include it in version control by added it to the `.gitignore`.
 
 ### Node.js
 
@@ -38,7 +38,7 @@ To save the video summarize and video data, we will use GridDB database. We will
 
 ## Run the Project
 
-### PUll the Source Code
+### Pull the Source Code
 
 To run the project, you need to clone the code from this [repository](https://github.com/junwatu/video-summarizer-nodejs-griddb).
 
