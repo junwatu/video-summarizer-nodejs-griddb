@@ -11,14 +11,12 @@ const apiUrl = new URL(process.env.VITE_API_URL)
 const hostname = apiUrl.hostname
 const port = apiUrl.port || 3000
 
-// Middleware to parse JSON bodies
-app.use(express.json())
-
 // Determine the __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Set up Multer storage configuration
+app.use(express.json())
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, path.join(__dirname, 'uploads'))
@@ -30,18 +28,14 @@ const storage = multer.diskStorage({
 	},
 })
 
-// Initialize Multer with the storage configuration
 const upload = multer({ storage })
 
-// Serve static files from the "dist" directory
 app.use(express.static(path.join(__dirname, 'dist')))
 
-// Route: /
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-// Route: /upload
 app.post('/upload', upload.single('video'), (req, res) => {
 	if (!req.file) {
 		return res.status(400).send('No file uploaded')
@@ -49,13 +43,11 @@ app.post('/upload', upload.single('video'), (req, res) => {
 	res.send(`File uploaded: ${req.file.filename}`)
 })
 
-// Route: /summarize/:id
 app.get('/summarize/:id', (req, res) => {
 	const { id } = req.params
 	res.send(`Summary for ID: ${id}`)
 })
 
-// Route: /videos
 app.get('/videos', (req, res) => {
 	res.send('List of videos')
 })
