@@ -86,7 +86,7 @@ You need to fill in the environment variables in this file:
 
 ```ini
 OPENAI_API_KEY=sk-....
-APP_BASE_URL=http://localhost:3000
+VITE_API_URL=http://localhost:3000
 ```
 
 Every time you change the `APP_BASE_URL` you need to rebuild the project also. Please run this command in the `app` folder if you change that variable:
