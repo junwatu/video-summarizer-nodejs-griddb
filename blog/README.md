@@ -98,3 +98,12 @@ npm run rebuild
 The command above will update the project to the new project url setting.
 
 ### Start the Project
+
+Run this command to run the project:
+
+```shell
+npm run start
+```
+
+
+
