@@ -33,6 +33,14 @@ const storage = multer.diskStorage({
 // Initialize Multer with the storage configuration
 const upload = multer({ storage })
 
+// Serve static files from the "dist" directory
+app.use(express.static(path.join(__dirname, 'dist')))
+
+// Route: /
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
 // Route: /upload
 app.post('/upload', upload.single('video'), (req, res) => {
 	if (!req.file) {
