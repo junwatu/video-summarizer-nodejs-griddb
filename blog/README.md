@@ -56,6 +56,15 @@ If not running try to run the database with this command:
 sudo systemctl start gridstore
 ```
 
+### OpenCV
+
+This project need OpenCV to be installed on the system. It's needed for video to frames processing. In Ubuntu 22.04 LTS you can install it using this command:
+
+```shell
+sudo apt update
+sudo apt install libopencv-dev python3-opencv
+```
+
 ## Run the Project
 
 ### Pull the Source Code
@@ -105,6 +114,3 @@ Run this command to run the project:
 ```shell
 npm run start
 ```
-
-
-
