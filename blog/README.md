@@ -50,6 +50,7 @@ Run GridDB and check if the service is running. Use this command:
 ```shell
 sudo systemctl status gridstore
 ```
+
 If not running try to run the database with this command:
 
 ```shell
@@ -99,7 +100,7 @@ OPENAI_API_KEY=sk-....
 VITE_API_URL=http://localhost:3000
 ```
 
-Every time you change the `APP_BASE_URL` you need to rebuild the project also. Please run this command in the `app` folder if you change that variable:
+Every time you change the `VITE_API_URL` you need to rebuild the project also. Please run this command in the `app` folder if you change that variable:
 
 ```shell
 npm run rebuild
