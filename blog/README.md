@@ -24,7 +24,8 @@ The OpenAI key will be saved on the `.env` file and make sure you don't include 
 
 ### Node.js
 
-This project will run on the Node.js platform. You need to install it from [here](https://nodejs.org/en/download). For this project, we will use the `nvm` package manager.
+This project will run on the Node.js platform. You need to install it from [here](https://nodejs.org/en/download). For this project, we will use the `nvm` package manager and Node.js v20.13.1
+LTS version.
 
 ```shell
 # installs nvm (Node Version Manager)
