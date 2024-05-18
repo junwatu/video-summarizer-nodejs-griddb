@@ -143,7 +143,7 @@ The GPT-4o model can directly process images and take intelligent actions based 
 - Base64 Encoded
 - URL
 
-In this project, we will utilize base64 encoding for the images.
+In this project, we will use base64 encoding for the images. The function `imageToBase64()` will read each image file and convert it into a base64 encoded image.
 
 ```js
 // Function to convert an image file to base64 using Buffer
@@ -160,3 +160,7 @@ export function imageToBase64(imagePath) {
     })
 }
 ```
+
+### Audio Extraction
+
+
