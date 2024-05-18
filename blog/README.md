@@ -91,7 +91,7 @@ OPENAI_API_KEY=sk-....
 VITE_API_URL=http://localhost:3000
 ```
 
-It is important to note that you must restart the project every time you change the `VITE_API_URL` environment variable.
+It is important to note that the project must be restarted every time you change the `VITE_API_URL` environment variable.
 
 ### Start the Project
 
@@ -107,7 +107,9 @@ This project uses the GPT-4o and Whisper models from OpenAI to summarize the upl
 
 ### Video Processing
 
+While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model.
 
+This function, `extractFrames()`, will extract images from the video file and save them in the uploads folder.
 
 ```js
 export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
@@ -141,6 +143,7 @@ The GPT-4o model can directly process images and take intelligent actions based 
 - Base64 Encoded
 - URL
 
+In this project, we will utilize base64 encoding for the images.
 
 ```js
 // Function to convert an image file to base64 using Buffer
@@ -157,6 +160,3 @@ export function imageToBase64(imagePath) {
 	})
 }
 ```
-
-
-
