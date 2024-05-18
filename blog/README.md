@@ -111,7 +111,7 @@ These are the primary preparation steps for videos before we input them into Ope
 
 While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model. 
 
-This function, `extractFrames()`, will extract images from the video file and save them in the uploads folder.
+This function, `extractFrames()`, will extract images from the video file and save them in the `frames` folder.
 
 ```js
 export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
@@ -164,7 +164,9 @@ export function imageToBase64(imagePath) {
 
 ### 3. Audio Extraction
 
-To extract audio from video, we can also use the `fluent-ffmpeg` npm.
+For a better context summarization, we can add audio to the OpenAI model for transcription, in this case, it's done by the Whisper model.
+
+To extract audio from video, we can also use the `fluent-ffmpeg` npm. The audio result is in `mp3` format and saved in the `audio` directory.
 
 ```js
 // Function to extract audio from video
@@ -179,4 +181,3 @@ export function extractAudio(videoPath, audioPath) {
     })
 }
 ```
-
