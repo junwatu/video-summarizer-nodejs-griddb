@@ -3,6 +3,9 @@ import { URL } from 'url'
 import multer from 'multer'
 import express from 'express'
 import { fileURLToPath } from 'url'
+// eslint-disable-next-line no-unused-vars
+import { processVideo } from './videoprocessor.js'
+
 
 const app = express()
 
