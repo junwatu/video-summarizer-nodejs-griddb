@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Box, Heading, Badge } from '@radix-ui/themes'
+import { Box, Heading, Badge, Text } from '@radix-ui/themes'
 
 const VideoUpload = () => {
 	const [file, setFile] = useState(null)
@@ -48,16 +48,16 @@ const VideoUpload = () => {
 			<Badge>{uploadStatus}</Badge>
 			{frameCount > 0 && (
 				<div>
-					<h2>Number of Extracted Frames: {frameCount}</h2>
+					<Badge>Number of Extracted Frames: {frameCount}</Badge>
 				</div>
 			)}
 			{audioPath && (
 				<div>
-					<h2>Extracted Audio</h2>
-					<audio controls>
-						<source src={audioPath} type="audio/mp3" />
-						Your browser does not support the audio element.
-					</audio>
+					<Badge>
+						<a href={audioPath} download>
+							Download Extracted Audio
+						</a>
+					</Badge>
 				</div>
 			)}
 		</Box>

@@ -57,9 +57,14 @@ export async function processVideo(videoPath, secondsPerFrame = 2) {
 	const base64Frames = []
 	const baseVideoPath = path.parse(videoPath).name
 	const outputFolder = 'frames'
+	const outputAudioFolder = 'audio'
 
 	if (!fs.existsSync(outputFolder)) {
 		fs.mkdirSync(outputFolder)
+	}
+
+	if (!fs.existsSync(outputAudioFolder)) {
+		fs.mkdirSync(outputAudioFolder)
 	}
 
 	// Extract frames from the video
@@ -71,13 +76,11 @@ export async function processVideo(videoPath, secondsPerFrame = 2) {
 		base64Frames.push(base64Frame)
 	}
 
-	console.log(base64Frames[0])
-
-	// Extract audio from video
-	const audioPath = `${baseVideoPath}.mp3`
+	const audioFilename = `${baseVideoPath}.mp3`
+	const audioPath = path.join(outputAudioFolder, audioFilename)
 	await extractAudio(videoPath, audioPath)
 
 	console.log(`Extracted ${base64Frames.length} frames`)
 	console.log(`Extracted audio to ${audioPath}`)
-	return { base64Frames, audioPath }
+	return { base64Frames, audioFilename }
 }

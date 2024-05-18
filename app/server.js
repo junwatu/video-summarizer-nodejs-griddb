@@ -32,6 +32,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'audio')))
+app.use(express.static(path.join(__dirname, 'frames')))
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
@@ -43,11 +45,11 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 	}
 	try {
 		const videoPath = path.join(__dirname, 'uploads', req.file.filename)
-		const { base64Frames, audioPath } = await processVideo(videoPath)
+		const { base64Frames, audioFilename } = await processVideo(videoPath)
 		res.json({
 			message: `File uploaded and processed: ${req.file.filename}`,
 			frames: base64Frames,
-			audio: audioPath
+			audio: audioFilename
 		})
 	} catch (error) {
 		console.error('Error processing video:', error)
