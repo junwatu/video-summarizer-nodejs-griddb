@@ -91,18 +91,16 @@ OPENAI_API_KEY=sk-....
 VITE_API_URL=http://localhost:3000
 ```
 
-Every time you change the `VITE_API_URL` you need to rebuild the project also. Please run this command in the `app` folder if you change that variable:
-
-```shell
-npm run rebuild
-```
-
-The command above will update the project to the new project url setting.
+It is important to note that you must restart the project every time you change the `VITE_API_URL` environment variable.
 
 ### Start the Project
 
 Run this command to run the project:
 
 ```shell
-npm run start
+npm run start:build
 ```
+
+
+
+
