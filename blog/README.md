@@ -105,9 +105,11 @@ npm run start:build
 
 This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio files, you can use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
 
+However, since GPT-4o in the API does not yet support audio-in (as of May 2024), we'll use a combination of GPT-4o and Whisper to process both the audio and visual for a provided video, and use them for summarization.
+
 ### Video Processing
 
-While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model.
+While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model. 
 
 This function, `extractFrames()`, will extract images from the video file and save them in the uploads folder.
 
