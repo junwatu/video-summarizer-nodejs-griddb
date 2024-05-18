@@ -12,15 +12,15 @@ This project running on Ubuntu 22.04 LTS. These are the mandatory stack requirem
 
 ### OpenAI Key
 
-To access any OpenAI services, you need a valid key. Go to this [link](https://platform.openai.com/api-keys) and create a new OpenAI key.
+To access any OpenAI services, we need a valid key. Go to this [link](https://platform.openai.com/api-keys) and create a new OpenAI key.
 
 ![setup key](images/openai-key.png)
 
-The OpenAI key is on a project basis, so you need to create a project first in the OpenAI platform and you need also enable any models that you use on a project. For this project we will need `gpt-4o` and `whisper` models.
+The OpenAI key is on a project basis, so we need to create a project first in the OpenAI platform and you need also to enable any models that you use on a project. For this project we will need `gpt-4o` and `whisper` models.
 
 ![enabled models](images/openai-enabled-models.png)
 
-The OpenAI key will be saved on the `.env` file and make sure you don't include it in version control by adding it to the `.gitignore`.
+The OpenAI key will be saved on the `.env` file and make sure not to include it in version control by adding it to the `.gitignore`.
 
 ### Node.js
 
@@ -103,10 +103,60 @@ npm run start:build
 
 ## How it Works?
 
-This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio file, you can use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
+This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio files, you can use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
+
+### Video Processing
+
+
+
+```js
+export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
+	return new Promise((resolve, reject) => {
+		const frameRate = 1 / secondsPerFrame
+		const framePattern = path.join(outputFolder, 'frame-%03d.png')
+
+		ffmpeg(videoPath)
+			.outputOptions([`-vf fps=${frameRate}`])
+			.output(framePattern)
+			.on('end', () => {
+				fs.readdir(outputFolder, (err, files) => {
+					if (err) {
+						reject(err)
+					} else {
+						const framePaths = files.map(file => path.join(outputFolder, file))
+						resolve(framePaths)
+					}
+				})
+			})
+			.on('error', reject)
+			.run()
+	})
+}
+```
 
 ### Image Processing
 
-### Video Processing
+The GPT-4o model can directly process images and take intelligent actions based on the image. We can provide images in two formats:
+
+- Base64 Encoded
+- URL
+
+
+```js
+// Function to convert an image file to base64 using Buffer
+export function imageToBase64(imagePath) {
+	return new Promise((resolve, reject) => {
+		fs.readFile(imagePath, (err, data) => {
+			if (err) {
+				reject(err)
+			} else {
+				const base64String = data.toString('base64')
+				resolve(base64String)
+			}
+		})
+	})
+}
+```
+
 
 
