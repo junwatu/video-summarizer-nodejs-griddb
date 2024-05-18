@@ -39,7 +39,7 @@ const VideoUpload = () => {
 
 	return (
 		<div>
-			<h1>Upload Video</h1>
+			<h1>AI-powered Video Summarizer</h1>
 			<form onSubmit={handleUpload}>
 				<input type="file" accept="video/*" onChange={handleFileChange} />
 				<button type="submit">Upload</button>
