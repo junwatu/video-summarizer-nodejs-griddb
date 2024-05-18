@@ -55,7 +55,7 @@ const VideoUpload = () => {
 				<div>
 					<Badge>
 						<a href={audioPath} download>
-							Download Extracted Audio
+							Download extracted audio
 						</a>
 					</Badge>
 				</div>
