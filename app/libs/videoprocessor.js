@@ -1,7 +1,6 @@
 import ffmpeg from 'fluent-ffmpeg'
 import fs from 'fs'
 import path from 'path'
-import { encode as base64Encode } from 'base64-stream'
 
 // Function to extract frames using ffmpeg
 export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
@@ -27,26 +26,17 @@ export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
 	})
 }
 
-// Function to convert an image file to base64
+// Function to convert an image file to base64 using Buffer
 export function imageToBase64(imagePath) {
 	return new Promise((resolve, reject) => {
-		const readStream = fs.createReadStream(imagePath)
-		let base64String = ''
-
-		const base64EncodeStream = base64Encode()
-		base64EncodeStream.on('data', (chunk) => {
-			base64String += chunk
+		fs.readFile(imagePath, (err, data) => {
+			if (err) {
+				reject(err)
+			} else {
+				const base64String = data.toString('base64')
+				resolve(base64String)
+			}
 		})
-
-		base64EncodeStream.on('end', () => {
-			resolve(base64String)
-		})
-
-		base64EncodeStream.on('error', (err) => {
-			reject(err)
-		})
-
-		readStream.pipe(base64EncodeStream)
 	})
 }
 
@@ -80,6 +70,8 @@ export async function processVideo(videoPath, secondsPerFrame = 2) {
 		const base64Frame = await imageToBase64(framePath)
 		base64Frames.push(base64Frame)
 	}
+
+	console.log(base64Frames[0])
 
 	// Extract audio from video
 	const audioPath = `${baseVideoPath}.mp3`

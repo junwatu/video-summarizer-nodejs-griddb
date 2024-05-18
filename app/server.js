@@ -3,9 +3,7 @@ import { URL } from 'url'
 import multer from 'multer'
 import express from 'express'
 import { fileURLToPath } from 'url'
-// eslint-disable-next-line no-unused-vars
-import { processVideo } from './videoprocessor.js'
-
+import { processVideo } from './libs/videoProcessor.js'
 
 const app = express()
 
@@ -39,11 +37,22 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.post('/upload', upload.single('video'), (req, res) => {
+app.post('/upload', upload.single('video'), async (req, res) => {
 	if (!req.file) {
 		return res.status(400).send('No file uploaded')
 	}
-	res.send(`File uploaded: ${req.file.filename}`)
+	try {
+		const videoPath = path.join(__dirname, 'uploads', req.file.filename)
+		const { base64Frames, audioPath } = await processVideo(videoPath)
+		res.json({
+			message: `File uploaded and processed: ${req.file.filename}`,
+			frames: base64Frames,
+			audio: audioPath
+		})
+	} catch (error) {
+		console.error('Error processing video:', error)
+		res.status(500).send('Error processing video')
+	}
 })
 
 app.get('/summarize/:id', (req, res) => {
@@ -55,7 +64,6 @@ app.get('/videos', (req, res) => {
 	res.send('List of videos')
 })
 
-// Route: /video/:id
 app.get('/video/:id', (req, res) => {
 	const { id } = req.params
 	res.send(`Video details for ID: ${id}`)
