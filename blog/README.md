@@ -105,9 +105,9 @@ npm run start:build
 
 This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio files, you can use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
 
-However, since GPT-4o in the API does not yet support audio-in (as of May 2024), we'll use a combination of GPT-4o and Whisper to process both the audio and visual for a provided video, and use them for summarization.
+These are the primary preparation steps for videos before we input them into OpenAI models for the summarization process.
 
-### Video Processing
+### 1. Video Processing
 
 While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model. 
 
@@ -138,7 +138,7 @@ export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
 }
 ```
 
-### Image Processing
+### 2. Image Processing
 
 The GPT-4o model can directly process images and take intelligent actions based on the image. We can provide images in two formats:
 
@@ -148,7 +148,6 @@ The GPT-4o model can directly process images and take intelligent actions based 
 In this project, we will use base64 encoding for the images. The function `imageToBase64()` will read each image file and convert it into a base64 encoded image.
 
 ```js
-// Function to convert an image file to base64 using Buffer
 export function imageToBase64(imagePath) {
     return new Promise((resolve, reject) => {
         fs.readFile(imagePath, (err, data) => {
@@ -163,6 +162,21 @@ export function imageToBase64(imagePath) {
 }
 ```
 
-### Audio Extraction
+### 3. Audio Extraction
 
+To extract audio from video, we can also use the `fluent-ffmpeg` npm.
+
+```js
+// Function to extract audio from video
+export function extractAudio(videoPath, audioPath) {
+    return new Promise((resolve, reject) => {
+        ffmpeg(videoPath)
+            .output(audioPath)
+            .audioBitrate('32k')
+            .on('end', resolve)
+            .on('error', reject)
+            .run()
+    })
+}
+```
 
