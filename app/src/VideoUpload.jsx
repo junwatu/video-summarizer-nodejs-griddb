@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Box, Heading, Badge, Text } from '@radix-ui/themes'
+import { Box, Heading, Badge } from '@radix-ui/themes'
 
 const VideoUpload = () => {
 	const [file, setFile] = useState(null)
