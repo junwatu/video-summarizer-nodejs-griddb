@@ -184,3 +184,4 @@ The code for video processing, image processing, and audio extraction can be fou
 
 ## Video Summarization Process
 
+The video summary is created by inputting both the visual and audio elements of the video into the model simultaneously. By providing both of these inputs, the model is expected to produce a more accurate summary as it can perceive the entire video at once.
