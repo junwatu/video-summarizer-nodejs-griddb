@@ -210,7 +210,6 @@ async function createVideoSummarization(frames, audioTranscription) {
                 role: "system",
                 content: "You are generating a video summary. Please provide a summary of the video. Respond in Markdown."
             }
-
             ,
             {
                 role: "user",
