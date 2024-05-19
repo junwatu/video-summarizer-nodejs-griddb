@@ -164,9 +164,7 @@ export function imageToBase64(imagePath) {
 
 ### 3. Audio Extraction
 
-For a better context summarization, we can add audio to the OpenAI model for transcription, in this case, it's done by the Whisper model.
-
-To extract audio from video, we can also use the `fluent-ffmpeg` npm. The audio result is in `mp3` format and saved in the `audio` directory.
+For a better context summarization, we can add audio to the OpenAI model for transcription, in this case, it's done by the Whisper model. To extract audio from video, we can also use the `fluent-ffmpeg` npm. The audio result is in `mp3` format and saved in the `audio` directory.
 
 ```js
 // Function to extract audio from video
@@ -181,3 +179,8 @@ export function extractAudio(videoPath, audioPath) {
     })
 }
 ```
+
+The code for video processing, image processing, and audio extraction can be found in the file `libs/videoProcessing.js`.
+
+## Video Summarization Process
+
