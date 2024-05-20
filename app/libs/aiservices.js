@@ -1,3 +1,4 @@
+import fs from 'fs';
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -37,4 +38,16 @@ async function createVideoSummarization(frames, audioTranscription) {
 	return response;
 }
 
-export { createVideoSummarization }
+async function transcribeAudio(filePath) {
+	try {
+		const transcription = await openai.audio.transcriptions.create({
+			file: fs.createReadStream(filePath),
+			model: 'whisper-1'
+		})
+		return transcription.text
+	} catch (error) {
+		throw new Error(`Transcription failed: ${error.message}`)
+	}
+}
+
+export { createVideoSummarization, transcribeAudio }

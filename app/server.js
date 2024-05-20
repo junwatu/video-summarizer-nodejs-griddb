@@ -4,6 +4,8 @@ import multer from 'multer'
 import express from 'express'
 import { fileURLToPath } from 'url'
 import { processVideo } from './libs/videoProcessor.js'
+// eslint-disable-next-line no-unused-vars
+import { createVideoSummarization, transcribeAudio } from './libs/aiservices.js'
 
 const app = express()
 
@@ -46,6 +48,18 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 	try {
 		const videoPath = path.join(__dirname, 'uploads', req.file.filename)
 		const { base64Frames, audioFilename } = await processVideo(videoPath)
+
+		// transcribe audio here
+		/**
+		 * 
+		 */
+
+
+		// create video summarization here
+		/**
+		 * await createVideoSummarization()
+		 */
+
 		res.json({
 			message: `File uploaded and processed: ${req.file.filename}`,
 			frames: base64Frames,
