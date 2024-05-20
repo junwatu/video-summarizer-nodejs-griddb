@@ -49,7 +49,6 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 		const videoPath = path.join(__dirname, 'uploads', req.file.filename)
 		const { base64Frames, audioFilename } = await processVideo(videoPath)
 		const audioToTextResponse = await transcribeAudio(path.join(outputAudioFolder, audioFilename))
-		console.log(audioToTextResponse)
 
 		// create video summarization
 		/**
@@ -59,7 +58,8 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 		res.json({
 			message: `File uploaded and processed: ${req.file.filename}`,
 			frames: base64Frames,
-			audio: audioFilename
+			audio: audioFilename,
+			audioTranscription: audioToTextResponse
 		})
 	} catch (error) {
 		console.error('Error processing video:', error)

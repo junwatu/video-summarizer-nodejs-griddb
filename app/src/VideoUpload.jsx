@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Box, Heading, Badge } from '@radix-ui/themes'
+import { Box, Heading, Badge, Text } from '@radix-ui/themes'
 
 const VideoUpload = () => {
 	const [file, setFile] = useState(null)
 	const [uploadStatus, setUploadStatus] = useState('')
 	const [frameCount, setFrameCount] = useState(0)
 	const [audioPath, setAudioPath] = useState('')
+	const [audioTranscription, setAudioTranscription] = useState('')
 
 	const handleFileChange = (e) => {
 		setFile(e.target.files[0])
@@ -32,6 +33,7 @@ const VideoUpload = () => {
 			setUploadStatus('Upload successful!')
 			setFrameCount(response.data.frames.length)
 			setAudioPath(response.data.audio)
+			setAudioTranscription(response.data.audioTranscription)
 		} catch (error) {
 			console.error('Error uploading file:', error)
 			setUploadStatus('Upload failed.')
@@ -59,6 +61,11 @@ const VideoUpload = () => {
 						</a>
 					</Badge>
 				</div>
+			)}
+			{ audioTranscription && (
+				<Box py="4">
+					<Text>{ audioTranscription }</Text>
+				</Box>
 			)}
 		</Box>
 	)
