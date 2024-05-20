@@ -182,7 +182,21 @@ export function extractAudio(videoPath, audioPath) {
 
 ### 4. Audio Transcription
 
-After audio extraction, we need to transcribe it into a text. This can be done using speech to text model, Whisper. 
+After extracting the audio, we need to transcribe it into text using the speech-to-text model Whisper. 
+
+```js
+async function transcribeAudio(filePath) {
+	try {
+		const transcription = await openai.audio.transcriptions.create({
+			file: fs.createReadStream(filePath),
+			model: 'whisper-1'
+		})
+		return transcription.text
+	} catch (error) {
+		throw new Error(`Transcription failed: ${error.message}`)
+	}
+}
+```
 
 
 
