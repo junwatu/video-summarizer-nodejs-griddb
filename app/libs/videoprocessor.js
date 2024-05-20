@@ -52,12 +52,13 @@ export function extractAudio(videoPath, audioPath) {
 	})
 }
 
+export const outputFolder = "frames"
+export const outputAudioFolder = "audio"
+
 // Function to process video and extract frames at specified interval and audio
 export async function processVideo(videoPath, secondsPerFrame = 2) {
 	const base64Frames = []
 	const baseVideoPath = path.parse(videoPath).name
-	const outputFolder = 'frames'
-	const outputAudioFolder = 'audio'
 
 	if (!fs.existsSync(outputFolder)) {
 		fs.mkdirSync(outputFolder)
