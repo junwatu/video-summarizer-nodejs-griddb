@@ -198,9 +198,9 @@ async function transcribeAudio(filePath) {
 }
 ```
 
+The `transcribeAudio()` will transcribe an audio file to text using the `whisper-1` AI model. For more information about how this speech-to-text model works, please read [here](https://openai.com/index/whisper/).
 
-
-The code for video processing, image processing, and audio extraction can be found in the file `libs/videoProcessing.js`.
+> The code for video processing, image processing, and audio extraction can be found in the file `libs/videoProcessing.js`.
 
 ## Video Summarization Process
 
