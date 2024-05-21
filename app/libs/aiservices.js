@@ -24,16 +24,6 @@ async function createVideoSummarization(frames, audioTranscription) {
 		],
 	}
 
-	/**
-	fs.writeFile('videoContent.txt', JSON.stringify(videoContent, null, 2), (err) => {
-		if (err) {
-			console.error('Error saving video content to file:', err)
-		} else {
-			console.log('Video content saved')
-		}
-	})
-	*/
-
 	const response = await openai.chat.completions.create({
 		model: "gpt-4o",
 		messages: [
