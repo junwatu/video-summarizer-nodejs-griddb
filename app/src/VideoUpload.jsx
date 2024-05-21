@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Box, Heading, Badge, Text } from '@radix-ui/themes'
+import { Box, Heading, Badge } from '@radix-ui/themes'
+import Markdown from 'react-markdown'
 
 const VideoUpload = () => {
 	const [file, setFile] = useState(null)
@@ -46,10 +47,13 @@ const VideoUpload = () => {
 	return (
 		<Box>
 			<Heading>AI Video Summarizer</Heading>
+			<Box py="4">
+
 			<form onSubmit={handleUpload}>
 				<input type="file" accept="video/*" onChange={handleFileChange} />
 				<button type="submit">Upload</button>
 			</form>
+			</Box>
 			<Badge>{uploadStatus}</Badge>
 			{frameCount > 0 && (
 				<div>
@@ -67,7 +71,7 @@ const VideoUpload = () => {
 			)}
 			{ videoSummary && (
 				<Box py="4">
-					<Text>{ videoSummary }</Text>
+					<Markdown>{ videoSummary }</Markdown>
 				</Box>
 			)}
 		</Box>

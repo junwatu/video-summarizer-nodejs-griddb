@@ -51,6 +51,7 @@ export function extractFrames(videoPath, secondsPerFrame, outputFolder, scaleFac
 	})
 }
 
+// Function to convert an image file to base64 using Buffer with UTF-8 encoding
 export function imageToBase64(imagePath) {
 	console.log(`imagePath: ${imagePath}`)
 	return new Promise((resolve, reject) => {
@@ -59,9 +60,9 @@ export function imageToBase64(imagePath) {
 		const isValidPattern = /^frame-\d{3}\.png$/.test(fileName)
 
 		if (!isPng || !isValidPattern) {
-			const errorMsg = `Invalid file: ${fileName}. Only files matching the pattern frame-###.png are allowed.`
-			console.error(errorMsg)
-			reject(new Error(errorMsg))
+			const errorMsg = `Skipping file: ${fileName}. Only files matching the pattern frame-###.png are processed.`
+			console.log(errorMsg)
+			resolve(null) // Skip invalid files by resolving with null
 			return
 		}
 
@@ -96,7 +97,6 @@ export function extractAudio(videoPath, audioPath) {
 export const outputFolder = 'frames'
 export const outputAudioFolder = 'audio'
 
-// Function to process video and extract frames at specified interval and audio
 export async function processVideo(videoPath, secondsPerFrame = 4) {
 	const base64Frames = []
 	const baseVideoPath = path.parse(videoPath).name
@@ -109,14 +109,17 @@ export async function processVideo(videoPath, secondsPerFrame = 4) {
 		fs.mkdirSync(outputAudioFolder)
 	}
 
+	// Clean the frames folder before extracting new frames
 	await cleanFramesFolder(outputFolder)
 
+	// Extract frames from the video
 	const framePaths = await extractFrames(videoPath, secondsPerFrame, outputFolder)
 
-	for (const framePath of framePaths) {
-		const base64Frame = await imageToBase64(framePath)
-		base64Frames.push(base64Frame)
-	}
+	// Convert each frame to base64 and filter out null values
+	const base64Promises = framePaths.map(framePath => imageToBase64(framePath))
+	const base64Results = await Promise.all(base64Promises)
+	const validBase64Frames = base64Results.filter(base64 => base64 !== null)
+	base64Frames.push(...validBase64Frames)
 
 	const audioFilename = `${baseVideoPath}.mp3`
 	const audioPath = path.join(outputAudioFolder, audioFilename)

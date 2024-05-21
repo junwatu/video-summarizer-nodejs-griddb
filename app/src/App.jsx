@@ -1,14 +1,16 @@
 // src/App.js
-import { Card, Box } from '@radix-ui/themes'
+import { Card, Box, Grid } from '@radix-ui/themes'
 import VideoUpload from './VideoUpload'
 
 const App = () => {
 	return (
-		<Box p="5px" maxWidth="400px">
+		<Grid columns="3" gap="3" width="auto" p="8">
+           <Box></Box>
 			<Card>
 				<VideoUpload />
 			</Card>
-		</Box>
+			<Box></Box>
+		</Grid>
 	)
 }
 
