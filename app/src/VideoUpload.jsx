@@ -7,7 +7,9 @@ const VideoUpload = () => {
 	const [uploadStatus, setUploadStatus] = useState('')
 	const [frameCount, setFrameCount] = useState(0)
 	const [audioPath, setAudioPath] = useState('')
+	// eslint-disable-next-line no-unused-vars
 	const [audioTranscription, setAudioTranscription] = useState('')
+	const [videoSummary, setVideoSummary] = useState('')
 
 	const handleFileChange = (e) => {
 		setFile(e.target.files[0])
@@ -34,6 +36,7 @@ const VideoUpload = () => {
 			setFrameCount(response.data.frames.length)
 			setAudioPath(response.data.audio)
 			setAudioTranscription(response.data.audioTranscription)
+			setVideoSummary(response.data.videoSummary)
 		} catch (error) {
 			console.error('Error uploading file:', error)
 			setUploadStatus('Upload failed.')
@@ -62,9 +65,9 @@ const VideoUpload = () => {
 					</Badge>
 				</div>
 			)}
-			{ audioTranscription && (
+			{ videoSummary && (
 				<Box py="4">
-					<Text>{ audioTranscription }</Text>
+					<Text>{ videoSummary }</Text>
 				</Box>
 			)}
 		</Box>

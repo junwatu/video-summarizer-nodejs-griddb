@@ -10,11 +10,30 @@ async function createVideoSummarization(frames, audioTranscription) {
 	const frameObjects = frames.map(x => ({
 		type: 'image_url',
 		image_url: {
-			url: `data:image/jpg;base64,${x}`,
-			detail: 'low'
+			url: `data:image/png;base64,${x}`,
+			detail: "low"
 		}
 	}));
 
+	const videoContent = {
+		role: "user",
+		content: [
+			{ type: 'text', text: "These are the frames from the video." },
+			...frameObjects,
+			{ type: 'text', text: `The audio transcription is: ${audioTranscription}` }
+		],
+	}
+
+	// Save video content to a file
+	fs.writeFile('videoContent.txt', JSON.stringify(videoContent, null, 2), (err) => {
+		if (err) {
+			console.error('Error saving video content to file:', err)
+		} else {
+			console.log('Video content saved')
+		}
+	})
+
+	/**
 	const response = await openai.chat.completions.create({
 		model: "gpt-4o",
 		messages: [
@@ -22,20 +41,16 @@ async function createVideoSummarization(frames, audioTranscription) {
 				role: "system",
 				content: "You are generating a video summary. Please provide a summary of the video. Respond in Markdown."
 			},
-			{
-				role: "user",
-				content: [
-					{ type: 'text', text: "These are the frames from the video." },
-					...frameObjects,
-					{ type: 'text', text: `The audio transcription is: ${audioTranscription}` }
-				],
-			},
+			videoContent
 		],
 		temperature: 0,
 	});
 
-	console.log(response.choices[0].message.content);
-	return response;
+	console.log(response)
+	const summarizeResponse = response.choices[0].message.content
+	return summarizeResponse;
+	*/
+	return null
 }
 
 async function transcribeAudio(filePath) {
