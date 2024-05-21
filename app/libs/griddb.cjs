@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-undef
 const griddb = require('griddb-node-api');
-const containerName = 'AIVoiceNote';
+const containerName = 'AIVideoSummarizer';
 
 const initStore = async () => {
 	const factory = griddb.StoreFactory.getInstance();
@@ -27,8 +28,8 @@ function initContainer() {
 		columnInfoList: [
 			['id', griddb.Type.INTEGER],
 			['filename', griddb.Type.STRING],
-			['speechText', griddb.Type.STRING],
-			['category', griddb.Type.STRING]
+			['audiotranscription', griddb.Type.STRING],
+			['summary', griddb.Type.STRING]
 		],
 		type: griddb.ContainerType.COLLECTION,
 		rowKey: true,
