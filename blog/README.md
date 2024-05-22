@@ -258,3 +258,4 @@ export { createVideoSummarization }
 
 ## Save Video Summary to GridDB
 
+GridDb database is used to save the video summary, video filepath, and video transcription.  
