@@ -255,3 +255,6 @@ async function createVideoSummarization(frames, audioTranscription) {
 
 export { createVideoSummarization }
 ```
+
+## Save Video Summary to GridDB
+
