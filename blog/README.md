@@ -281,7 +281,7 @@ There are three important fields here, which are:
 | `audioTranscription` | String | The transcription of the audio from the video. |
 | `summary`          | String | A summary of the video content.             |
 
-And all this data can be accessed from the route "/summaries". Open the browser; by default, this is the URL to access it:
+And all this data can be accessed from the route `/summaries`. Open the browser; by default, this is the URL to access it:
 
 ```shell
 http://localhost:3000/summaries
