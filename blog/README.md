@@ -273,7 +273,7 @@ export async function saveData({ filename, audioTranscription, summary }) {
 }
 ```
 
-There are three important fieds here, which are:
+There are three important fields here, which are:
 
 | Parameter          | Type   | Description                                 |
 |--------------------|--------|---------------------------------------------|
@@ -281,9 +281,9 @@ There are three important fieds here, which are:
 | `audioTranscription` | String | The transcription of the audio from the video. |
 | `summary`          | String | A summary of the video content.             |
 
-And all these data can be accessed from route `/summaries`. Open the browser and by default this is the URL to access it:
+And all this data can be accessed from the route "/summaries". Open the browser; by default, this is the URL to access it:
 
 ```shell
-HTTP://localhost:3000/summaries
+http://localhost:3000/summaries
 ```
 
