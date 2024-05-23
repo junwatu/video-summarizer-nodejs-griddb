@@ -258,4 +258,32 @@ export { createVideoSummarization }
 
 ## Save Video Summary to GridDB
 
-GridDb database is used to save the video summary, video filepath, and video transcription.  
+The GridDB database is utilized to store the video summary, video file path, and audio transcription. The code to save these data resides in the `griddbservices.js` file.
+
+```js
+export async function saveData({ filename, audioTranscription, summary }) {
+    const id = generateRandomID();
+    const videoFilename = String(filename);
+    const audioToText = String(audioTranscription);
+    const videoSummary = String(summary);
+
+    const packetInfo = [parseInt(id), videoFilename, audioToText, videoSummary];
+    const saveStatus = await GridDB.insert(packetInfo, collectionDb);
+    return saveStatus;
+}
+```
+
+There are three important fieds here, which are:
+
+| Parameter          | Type   | Description                                 |
+|--------------------|--------|---------------------------------------------|
+| `filename`         | String | The name of the video file.                 |
+| `audioTranscription` | String | The transcription of the audio from the video. |
+| `summary`          | String | A summary of the video content.             |
+
+And all these data can be accessed from route `/summaries`. Open the browser and by default this is the URL to access it:
+
+```shell
+HTTP://localhost:3000/summaries
+```
+
