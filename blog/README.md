@@ -103,7 +103,7 @@ npm run start:build
 
 ### Open Web App
 
-Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test-video` folder.
+Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test/video` folder.
 
 ![app screenshot](images/app-screenshot.png)
 
@@ -115,7 +115,7 @@ These are the primary preparation steps for videos before we input them into Ope
 
 ### 1. Video Processing
 
-While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model. 
+While it's not possible to directly send a video to the API, GPT-4o can understand videos if you sample frames and then provide them as images. It performs better at this task than the earlier GPT-4 Turbo model.
 
 This function, `extractFrames()`, will extract images from the video file and save them in the `frames` folder.
 
