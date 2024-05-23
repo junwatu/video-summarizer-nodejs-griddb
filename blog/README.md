@@ -103,7 +103,7 @@ npm run start:build
 
 ### Open Web App
 
-Open the web app using browser. The default URL is `http://localhost:3000`
+Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test-video` folder.
 
 ![app screenshot](images/app-screenshot.png)
 
