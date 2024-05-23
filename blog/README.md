@@ -101,6 +101,12 @@ Run this command to run the project:
 npm run start:build
 ```
 
+### Open Web App
+
+Open the web app using browser. The default URL is `http://localhost:3000`
+
+![app screenshot](images/app-screenshot.png)
+
 ## How it Works?
 
 This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio files, you can use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
