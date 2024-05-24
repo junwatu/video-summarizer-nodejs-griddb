@@ -24,7 +24,7 @@ The OpenAI key will be saved on the `.env` file and make sure not to include it 
 
 ### Node.js
 
-This project will run on the Node.js platform. You need to install it from [here](https://nodejs.org/en/download). For this project, we will use the `nvm` package manager and Node.js v20.13.1
+This project will run on the Node.js platform. You need to install it from [here](https://nodejs.org/en/download). For this project, we will use the `nvm` package manager and Node.js v16.20.2
 LTS version.
 
 ```shell
@@ -32,18 +32,18 @@ LTS version.
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # download and install Node.js
-nvm install 20
+nvm install 16
 
 # verifies the right Node.js version is in the environment
-node -v # should print `v20.13.1`
+node -v # should print `v16.20.2`
 
 # verifies the right NPM version is in the environment
-npm -v # should print `10.5.2`
+npm -v # should print `8.19.4``
 ```
 
 ### GridDB
 
-To save the video summary and video data, we will use the GridDB database. Please look at the [guide](https://docs.griddb.net/latest/gettingstarted/using-apt/#install-with-apt-get) for detailed installation. We will use Ubuntu 22.04 LTS here.
+To save the video summary and video data, we will use the GridDB database. Please look at the [guide](https://docs.griddb.net/latest/gettingstarted/using-apt/#install-with-apt-get) for detailed installation. We will use Ubuntu 20.04 LTS here.
 
 Run GridDB and check if the service is running. Use this command:
 
