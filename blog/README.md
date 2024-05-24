@@ -16,7 +16,7 @@ To access any OpenAI services, we need a valid key. Go to this [link](https://pl
 
 ![setup key](images/openai-key.png)
 
-The OpenAI key is on a project basis, so we need to create a project first in the OpenAI platform and you need also to enable any models that you use on a project. For this project we will need `gpt-4o` and `whisper` models.
+The OpenAI key is on a project basis, so we need to create a project first in the OpenAI platform and you need also to enable any models that you use on a project. For this project, we will need `gpt-4o` and `whisper` models.
 
 ![enabled models](images/openai-enabled-models.png)
 
@@ -50,7 +50,7 @@ sudo apt update
 sudo apt install ffmpeg
 ```
 
-For more information about installation, please go to the [FFmpeg official website](https://ffmpeg.org/).
+For more installation information, please go to the [FFmpeg official website](https://ffmpeg.org/).
 
 ### GridDB
 
