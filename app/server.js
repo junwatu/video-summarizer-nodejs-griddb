@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import { processVideo, outputAudioFolder } from './libs/videoprocessor.js'
 // eslint-disable-next-line no-unused-vars
 import { createVideoSummarization, transcribeAudio } from './libs/aiservices.js'
-//import { saveData } from './griddbservices.js'
+import { saveData, getAllData } from './griddbservices.js'
 
 const app = express()
 
@@ -51,11 +51,9 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 		const { base64Frames, audioFilename } = await processVideo(videoPath)
 		const audioToTextResponse = await transcribeAudio(path.join(outputAudioFolder, audioFilename))
 		const videoSummary = await createVideoSummarization(base64Frames, audioToTextResponse)
+		const saveResponse = await saveData({ videoPath, audioFilename, videoSummary })
 
-		// save data here
-		/**
-		 * await saveData({ videoPath, audioFilename, videoSummary })
-		 */
+		console.log(saveResponse)
 
 		res.json({
 			message: `File uploaded and processed: ${req.file.filename}`,
@@ -70,13 +68,11 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 	}
 })
 
-app.get('/summaries', (req, res) => {
-	/**
-	 * const allData = await getAllData()
-	 */
+app.get('/summaries', async (req, res) => {
+	const allDataSummaries = await getAllData()
+	console.log(allDataSummaries)
 	res.send(`All summaries data`)
 })
-
 
 app.listen(port, hostname, () => {
 	// eslint-disable-next-line no-undef
