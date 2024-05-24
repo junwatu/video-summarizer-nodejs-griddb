@@ -3,7 +3,7 @@ import { URL } from 'url'
 import multer from 'multer'
 import express from 'express'
 import { fileURLToPath } from 'url'
-import { processVideo, outputAudioFolder } from './libs/videoProcessor.js'
+import { processVideo, outputAudioFolder } from './libs/videoprocessor.js'
 // eslint-disable-next-line no-unused-vars
 import { createVideoSummarization, transcribeAudio } from './libs/aiservices.js'
 //import { saveData } from './griddbservices.js'
