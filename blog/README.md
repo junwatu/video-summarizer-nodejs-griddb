@@ -41,6 +41,8 @@ node -v # should print `v16.20.2`
 npm -v # should print `8.19.4``
 ```
 
+To connect Node.js and GridDB database, you need the [gridb-node-api](https://github.com/nodejs/node-addon-api) npm package which is a Node.js binding developed using GridDB C Client and Node addon API.
+
 ### FFmpeg
 
 This project utilizes the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package, which requires FFmpeg to be installed on the system. For Ubuntu, you can use the following command to install it:
