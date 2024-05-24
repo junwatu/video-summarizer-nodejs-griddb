@@ -18,7 +18,7 @@ To access any OpenAI services, we need a valid key. Go to this [link](https://pl
 
 The OpenAI key is on a project basis, so we need to create a project first in the OpenAI platform and you need also to enable any models that you use on a project. For this project we will need `gpt-4o` and `whisper` models.
 
-![enabled models](images/openai-enabled-models.png)
+![enabled models](images/ai-powered-video-summary.png)
 
 The OpenAI key will be saved on the `.env` file and make sure not to include it in version control by adding it to the `.gitignore`.
 
@@ -39,6 +39,15 @@ node -v # should print `v16.20.2`
 
 # verifies the right NPM version is in the environment
 npm -v # should print `8.19.4``
+```
+
+### Ffmpeg
+
+This project utilizes the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package, which requires ffmpeg to be installed on the system. For Ubuntu, you can use the following command to install it:
+
+```shell
+sudo apt update
+sudo apt install ffmpeg
 ```
 
 ### GridDB
