@@ -122,7 +122,7 @@ Open the web app using the browser. The default URL is `http://localhost:3000`. 
 
 ## How it Works?
 
-This project uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. It requires two models because OpenAI models cannot process video directly, but they can process images or audio files. In Node.js to separate the video into images and audio files, we use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
+The user flow for this project or web app involves opening the web app, uploading the video, waiting for processing, and receiving the summary result. It uses the GPT-4o and Whisper models from OpenAI to summarize the uploaded user video. This project requires two models because OpenAI models cannot process video directly, however they can process images or audio files. On the other side, in Node.js, to separate the video into images and audio files, we use the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package.
 
 These are the primary preparation steps for videos before we input them into OpenAI models for the summarization process.
 
