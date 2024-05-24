@@ -18,7 +18,7 @@ To access any OpenAI services, we need a valid key. Go to this [link](https://pl
 
 The OpenAI key is on a project basis, so we need to create a project first in the OpenAI platform and you need also to enable any models that you use on a project. For this project we will need `gpt-4o` and `whisper` models.
 
-![enabled models](images/ai-powered-video-summary.png)
+![enabled models](images/openai-enabled-models.png)
 
 The OpenAI key will be saved on the `.env` file and make sure not to include it in version control by adding it to the `.gitignore`.
 
@@ -41,14 +41,16 @@ node -v # should print `v16.20.2`
 npm -v # should print `8.19.4``
 ```
 
-### Ffmpeg
+### FFmpeg
 
-This project utilizes the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package, which requires ffmpeg to be installed on the system. For Ubuntu, you can use the following command to install it:
+This project utilizes the [`fluent-ffmpeg`](https://www.npmjs.com/package/fluent-ffmpeg) npm package, which requires FFmpeg to be installed on the system. For Ubuntu, you can use the following command to install it:
 
 ```shell
 sudo apt update
 sudo apt install ffmpeg
 ```
+
+For more information about installation, please go to the [FFmpeg official website](https://ffmpeg.org/).
 
 ### GridDB
 
@@ -114,7 +116,7 @@ npm run start:build
 
 Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test/video` folder.
 
-![app screenshot](images/app-screenshot.png)
+![app screenshot](images/ai-powered-video-summary.png)
 
 ## How it Works?
 
