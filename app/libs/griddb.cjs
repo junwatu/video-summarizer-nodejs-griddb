@@ -189,8 +189,8 @@ async function queryAll(conInfo, store) {
 			const rowData = {
 				id: `${row[0]}`,
 				filename: `${row[1]}`,
-				text: `${row[2]}`,
-				category: `${row[3]}`,
+				audioTranscription: `${row[2]}`,
+				summary: `${row[3]}`,
 			};
 			results.push(rowData);
 		}
