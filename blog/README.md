@@ -312,6 +312,8 @@ There are three important fields here, which are:
 | `audioTranscription` | String | The transcription of the audio from the video. |
 | `summary`          | String | A summary of the video content.             |
 
+The `saveData` function is a wrapper to save data to GridDB. You can find the real code that saves the data in the `libs/griddb.cjs` file.
+
 ## Get All Summaries
 
 All the summaries data can be accessed in the route `/summaries`. The default URL is:
