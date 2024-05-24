@@ -51,8 +51,14 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 		const { base64Frames, audioFilename } = await processVideo(videoPath)
 		const audioToTextResponse = await transcribeAudio(path.join(outputAudioFolder, audioFilename))
 		const videoSummary = await createVideoSummarization(base64Frames, audioToTextResponse)
-		const saveResponse = await saveData({ videoPath, audioFilename, videoSummary })
 
+		const summaryData = {
+			filename: videoPath,
+			audioTranscription: audioToTextResponse,
+			summary: videoSummary
+		}
+
+		const saveResponse = await saveData(summaryData)
 		console.log(saveResponse)
 
 		res.json({
@@ -70,8 +76,7 @@ app.post('/upload', upload.single('video'), async (req, res) => {
 
 app.get('/summaries', async (req, res) => {
 	const allDataSummaries = await getAllData()
-	console.log(allDataSummaries)
-	res.send(`All summaries data`)
+	res.json(allDataSummaries)
 })
 
 app.listen(port, hostname, () => {
