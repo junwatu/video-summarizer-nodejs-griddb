@@ -285,7 +285,7 @@ async function createVideoSummarization(frames, audioTranscription) {
 export { createVideoSummarization }
 ```
 
-The `content` parameter is an array and may contain text or images. Prompts can be added to summarize the video, as image frames addition, and audio text transcription for better context. You can look into the [Chat API](https://platform.openai.com/docs/api-reference/chat/create) documentation for more information.
+The `content` parameter is an array and may contain text or images. Prompts can be added to summarize the video, as image frames addition, and audio text transcription for better context. You can look into the [Chat API](https://platform.openai.com/docs/api-reference/chat/create) documentation for more information about the parameters.
 
 ## Save Video Summary to GridDB
 
