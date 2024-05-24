@@ -295,3 +295,4 @@ All the summaries data can be accessed in the route `/summaries`. The default UR
 http://localhost:3000/summaries
 ```
 
+![all summaries screenshot](images/all-summaries.png)
