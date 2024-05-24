@@ -92,7 +92,7 @@ npm install
 This project needs a few environment variables. Copy the `env.example` file to the `.env` file.
 
 ```shell
-cp .env.example .env
+cp .env .example .env
 ```
 
 You need to fill in the environment variables in this file:
@@ -114,7 +114,7 @@ npm run start:build
 
 ### Open Web App
 
-Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test/video` folder.
+Open the web app using the browser. The default URL is `http://localhost:3000`. Upload any videos and it's recommended to upload a short video for fast processing. You can also use the video in the `test/video` folder. Depending on the video duration, it will take a minute to process.
 
 ![app screenshot](images/ai-powered-video-summary.png)
 
@@ -306,4 +306,10 @@ All the summaries data can be accessed in the route `/summaries`. The default UR
 http://localhost:3000/summaries
 ```
 
+The response is JSON data, which is very easy to process on the client if you need further features or enhancements for the project.  
+
 ![all summaries screenshot](images/all-summaries.png)
+
+## Limitation
+
+This project is a prototype and tested with MP4 videos with a video duration not exceeding 5 minutes.
