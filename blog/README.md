@@ -157,6 +157,17 @@ export function extractFrames(videoPath, secondsPerFrame, outputFolder) {
 }
 ```
 
+In the function `extractFrames`, the parameter `secondsPerFrame` defines the interval between frames that you want to extract from the video. Specifically, `secondsPerFrame` determines how many seconds should elapse between each frame that is extracted.
+
+Here’s how it works:
+
+Frame Rate Calculation: The frame rate is calculated as the reciprocal of secondsPerFrame, i.e., frameRate = 1 / secondsPerFrame. This means:
+
+• If secondsPerFrame is 1, the frame rate is 1 frame per second.
+• If secondsPerFrame is 0.5, the frame rate is 2 frames per second.
+• If secondsPerFrame is 2, the frame rate is 0.5 frames per second (one frame every 2 seconds).
+
+
 ### 2. Image Processing
 
 The GPT-4o model can directly process images and take intelligent actions based on the image. We can provide images in two formats:
