@@ -8,7 +8,7 @@ We will be utilizing the following technologies: OpenAI, Node.js, React, and Gri
 
 ## Getting Started
 
-This project running on Ubuntu 22.04 LTS. These are the mandatory stack requirements that you need to run for this project:
+This project running on Ubuntu 20.04 LTS. These are the mandatory stack requirements that you need to run for this project:
 
 ### OpenAI Key
 
